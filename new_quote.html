@@ -1,0 +1,61 @@
+<!-- new_quote.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Quote Form</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <div id="navbars">
+        <ol id="navs">
+            <li class="navitemss" id="gq">Great Quotes</li>
+            <li class="navitemss" id="aq">All Quotes</li>
+            <li class="navitemss" id="nq">New Quote</li>
+        </ol>
+    </div>
+    <h1>Add New Quote</h1>
+    <form id="quoteForm">
+        <label for="author">Author:</label>
+        <input type="text" id="author" required>
+
+        <label for="quote">Quote:</label>
+        <textarea id="quote" rows="4" required></textarea>
+
+        <button type="button" id="saveBtn">Save</button>
+    </form>
+    
+    <div id="quoteDisplay"></div>
+
+    <script>
+        // Load previous data from Local Storage if available
+        const savedData = JSON.parse(localStorage.getItem('savedData')) || [];
+        const quoteDisplay = document.getElementById('quoteDisplay');
+
+        savedData.forEach((quote) => {
+            const quoteDiv = document.createElement('div');
+            quoteDiv.classList.add('quoteCard');
+            quoteDiv.innerHTML = `<h2>${quote.quote}</h2><h4>~${quote.author}</h4>`;
+            quoteDisplay.appendChild(quoteDiv);
+        });
+
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            const author = document.getElementById('author').value;
+            const quote = document.getElementById('quote').value;
+            if (author && quote) {
+                const quoteDiv = document.createElement('div');
+                quoteDiv.classList.add('quoteCard');
+                quoteDiv.innerHTML = `<h2>${quote}</h2><h4>~${author}</h4>`;
+                quoteDisplay.appendChild(quoteDiv);
+
+                // Save data to Local Storage
+                savedData.push({ author, quote });
+                localStorage.setItem('savedData', JSON.stringify(savedData));
+
+                document.getElementById('quoteForm').reset();
+            }
+        });
+    </script>
+</body>
+</html>

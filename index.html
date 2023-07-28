@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUOTES</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="navbars">
+        <ol id="navs">
+            <li class="navitemss" id="gq">Great Quotes</li>
+            <li class="navitemss" id="aq">All Quotes</li>
+            <li class="navitemss" id="nq">New Quotes</li>
+        </ol>
+    </div>
+    <h1>ALL Quotes</h1>
+    <div class="boxs">
+        <h2 class="h22s">MY NAME IS SAMARTH VOHRA</h2>
+        <h4 class="h24s">~Samarth Vohra</h4>
+        <button class="btns">View Full Quote</button>
+    </div>
+    <div class="boxs">
+        <h2 class="h22s">MY NAME IS KASHISH VOHRA</h2>
+        <h4 class="h24s">~Kashish Vohra</h4>
+        <button class="btns">View Full Quote</button>
+    </div>
+    <div class="boxs">
+        <h2 class="h22s">MY NAME IS RUPESH KUMAR</h2>
+        <h4 class="h24s">~Rupesh Kumar</h4>
+        <button class="btns">View Full Quote</button>
+    </div>
+    <div class="boxs">
+        <h2 class="h22s">MY NAME IS ZEESHAN ADEEN</h2>
+        <h4 class="h24s">~Zeeshan Adeen</h4>
+        <button class="btns">View Full Quote</button>
+    </div>
+    <div class="boxs">
+        <h2 class="h22s">BOHOT BADA AADMI BAN GYA HU</h2>
+        <h4 class="h24s">~sam</h4>
+        <button class="btns">View Full Quote</button>
+    </div>
+    <div class="boxs">
+        <h2 class="h22s">SAMARTH IS THE BEST MENTOR</h2>
+        <h4 class="h24s">~coding blocks</h4>
+        <button class="btns">View Full Quote</button>
+    </div>
+    <script>
+        document.getElementById('nq').addEventListener('click', function() {
+            window.location.href = 'new_quote.html';
+        });
+        document.getElementById('aq').addEventListener('click', function() {
+            const savedQuotes = JSON.parse(localStorage.getItem('quotes')) || [];
+            localStorage.setItem('quotesToShow', JSON.stringify(savedQuotes));
+            window.location.href = 'all_quotes.html';
+        });
+    </script>
+</body>
+</html>
